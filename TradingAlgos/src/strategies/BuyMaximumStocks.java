@@ -51,7 +51,7 @@ public class BuyMaximumStocks {
 						maxCountOfStocks = maxCountOfStocks + temp;
 						k = k - purchasePrice;
 						break;
-					}
+					}					
 					
 				}				
 				if(temp == 1)

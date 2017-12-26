@@ -49,7 +49,8 @@ public class IndexRebalancing {
 		String[] rows = contents.split(";");
 
 		switch (mapName) {
-		case "portfolio":portfolio = (HashMap<String, Integer>) Arrays.asList(rows).stream().map(eachRow -> eachRow.split(","))
+		case "portfolio":portfolio = (HashMap<String, Integer>) Arrays.asList(rows).stream()
+				.map(eachRow -> eachRow.split(","))
 				.collect(Collectors.toMap(eachRow -> eachRow[0], eachRow -> Integer.parseInt(eachRow[1])));			
 			break;
 		case "info":stocksFreeFloat = (HashMap<String, Long>) Arrays.asList(rows).stream().map(eachRow -> eachRow.split(","))
