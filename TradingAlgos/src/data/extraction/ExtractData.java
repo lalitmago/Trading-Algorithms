@@ -1,9 +1,19 @@
 package data.extraction;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.threeten.bp.*;
 
 import com.jimmoores.quandl.DataSetRequest;
 import com.jimmoores.quandl.Frequency;
+import com.jimmoores.quandl.MetaDataRequest;
+import com.jimmoores.quandl.MetaDataResult;
+import com.jimmoores.quandl.Row;
 import com.jimmoores.quandl.SessionOptions;
 import com.jimmoores.quandl.TabularResult;
 import com.jimmoores.quandl.classic.ClassicQuandlSession;
@@ -28,8 +38,21 @@ public class ExtractData {
 				.withStartDate(startDate)
 				.build();
 		
-		TabularResult result = session.getDataSet(dsRequest);
-		System.out.println(result.toPrettyPrintedString());
+		TabularResult tabResult = session.getDataSet(dsRequest);
+		//System.out.println(TabularResult.of(tabResult.getHeaderDefinition(), Arrays.asList(tabResult.get(3))).toPrettyPrintedString());
+		
+		System.out.println(tabResult.toPrettyPrintedString());
+		
+		MetaDataRequest mdRequest = MetaDataRequest.of("BSE/BOM500209");
+		
+		MetaDataResult mdResult = session.getMetaData(mdRequest);
+		
+		System.out.println();
+		
+		System.out.println(mdResult.toPrettyPrintedString());
+		
+		
+		
 	}
 	
 	
