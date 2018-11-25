@@ -14,58 +14,58 @@ import java.util.Set;
 
 public class Reconciliation {
 
-	private static String FIELD_SEPARATOR = ",";
+    private static String FIELD_SEPARATOR = ",";
 
-	private static String fileName = "data/MIS-List.txt";
-	private static String filenameWithCodes = "data/NSE-codes.csv";
-	private static String filenameOutput = "data/NSE-MIS-List.txt";
+    private static String fileName = "data/MIS-List.txt";
+    private static String filenameWithCodes = "data/NSE-codes.csv";
+    private static String filenameOutput = "data/NSE-MIS-List.txt";
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		String line;
+        String line;
 
-		Set<String> stockSymbols = new HashSet<>();
-		Map<String, String> stockSymbolsWithCodes = new HashMap<>();
+        Set<String> stockSymbols = new HashSet<>();
+        Map<String, String> stockSymbolsWithCodes = new HashMap<>();
 
-		BufferedReader bufferedReader = null;
-		PrintWriter printWriter = null;
+        BufferedReader bufferedReader = null;
+        PrintWriter printWriter = null;
 
-		try {
-			FileReader fileReader = new FileReader(new File(fileName));
-			bufferedReader = new BufferedReader(fileReader);
+        try {
+            FileReader fileReader = new FileReader(new File(fileName));
+            bufferedReader = new BufferedReader(fileReader);
 
-			while ((line = bufferedReader.readLine()) != null) {
-				stockSymbols.add(line);
-			}
+            while ((line = bufferedReader.readLine()) != null) {
+                stockSymbols.add(line);
+            }
 
-			fileReader = new FileReader(new File(filenameWithCodes));
-			bufferedReader = new BufferedReader(fileReader);
+            fileReader = new FileReader(new File(filenameWithCodes));
+            bufferedReader = new BufferedReader(fileReader);
 
-			while ((line = bufferedReader.readLine()) != null) {
-				stockSymbolsWithCodes.put(line.split(FIELD_SEPARATOR)[0].split("/")[1], line.split(FIELD_SEPARATOR)[0]);
-			}
+            while ((line = bufferedReader.readLine()) != null) {
+                stockSymbolsWithCodes.put(line.split(FIELD_SEPARATOR)[0].split("/")[1], line.split(FIELD_SEPARATOR)[0]);
+            }
 
-			FileWriter fileWriter = new FileWriter(new File(filenameOutput));
-			printWriter = new PrintWriter(fileWriter);
+            FileWriter fileWriter = new FileWriter(new File(filenameOutput));
+            printWriter = new PrintWriter(fileWriter);
 
-			for (String eachStockSymbol : stockSymbols) {
-				printWriter.println(stockSymbolsWithCodes.get(eachStockSymbol));
-			}
+            for (String eachStockSymbol : stockSymbols) {
+                printWriter.println(stockSymbolsWithCodes.get(eachStockSymbol));
+            }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (bufferedReader != null)
-				try {
-					bufferedReader.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bufferedReader != null)
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-			if (printWriter != null)
-				printWriter.close();
+            if (printWriter != null)
+                printWriter.close();
 
-		}
+        }
 
-	}
+    }
 }

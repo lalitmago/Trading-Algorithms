@@ -6,35 +6,34 @@ import com.google.common.collect.ArrayTable;
 
 public class Stock {
 
-	private String stockCode;
-	private ArrayTable<LocalDate, String, Double> historicalData;
+    private String stockCode;
+    private ArrayTable<LocalDate, String, Double> historicalData;
 
-	public Stock(String stockCode) {
-		this.stockCode = stockCode;
-	}
+    public Stock(String stockCode) {
+        this.stockCode = stockCode;
+    }
 
-	public String getStockCode() {
-		return stockCode;
-	}
+    public String getStockCode() {
+        return stockCode;
+    }
 
-	public void setStockCode(String stockCode) {
-		this.stockCode = stockCode;
-	}
+    public void setStockCode(String stockCode) {
+        this.stockCode = stockCode;
+    }
 
-	public ArrayTable<LocalDate, String, Double> getHistoricalData() {
-		return historicalData;
-	}
+    public ArrayTable<LocalDate, String, Double> getHistoricalData() {
+        return historicalData;
+    }
 
-	public void setHistoricalData(ArrayTable<LocalDate, String, Double> historicalData) {
-		this.historicalData = historicalData;
-	}
+    public void setHistoricalData(ArrayTable<LocalDate, String, Double> historicalData) {
+        this.historicalData = historicalData;
+    }
 
-	@Override
-	public String toString() {		
-		//return "Stock Code : " + this.stockCode + " with " + this.historicalData.size() + " days of data.";
-		return this.stockCode;
-	}
-	
-	
+    @Override
+    public String toString() {
+        //return "Stock Code : " + this.stockCode + " with " + this.historicalData.size() + " days of data.";
+        return this.stockCode;
+    }
+
 
 }
